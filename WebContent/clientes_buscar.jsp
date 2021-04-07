@@ -22,9 +22,12 @@
 		<input type="submit" value="Buscar"/>
 	</form>
 
-	<%--
-		ArrayList<Cliente> clientes = (ArrayList<Cliente>) request.getAttribute("resultados");		
+	<%
+		ArrayList<Cliente> clientes = 
+					(ArrayList<Cliente>) request.getAttribute("data");		
+	
 		if (clientes != null) {			
+			
 			if ( clientes.size() == 0 ) {
 				out.println("<ul> NO HAY RESULTADOS</ul>");				
 			} else {
@@ -33,8 +36,10 @@
 					out.println("<li>" + x.getNombreCompleto() + "</li>");
 				out.println("</ul>");
 			}
-		} 		
-	--%>
+		} else {
+			//out.println("NO HAY DATOS");
+		}
+	%>
 	
 	</div>
 </body>

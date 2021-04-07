@@ -56,7 +56,7 @@ public class BuscarClienteServlet extends HttpServlet {
 			}
 
 		// Guardando datos en el scope REQUEST
-		request.setAttribute("resultados", resultados);
+		request.setAttribute("data", resultados);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("clientes_buscar.jsp");
 		rd.forward(request, response);
@@ -69,10 +69,12 @@ public class BuscarClienteServlet extends HttpServlet {
 	private ArrayList<Cliente> obtenerDatos() {
 		Cliente c1 = new Cliente(11,"David","Rodriguez","Condezo");
 		Cliente c2 = new Cliente(12,"Juan","Perez","Quispe");
+		Cliente c3 = new Cliente(13,"David","Gomez","Montero");
 
 		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 		clientes.add(c1);
 		clientes.add(c2);
+		clientes.add(c3);
 		return clientes;
 	}
 
