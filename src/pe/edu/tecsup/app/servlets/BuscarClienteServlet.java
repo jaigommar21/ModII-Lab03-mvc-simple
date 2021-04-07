@@ -46,35 +46,34 @@ public class BuscarClienteServlet extends HttpServlet {
 
 		System.out.println("Dentro de ClientesBuscarServlet: " + criterio);
 
-		/*
-		Cliente c1 = new Cliente();
-		c1.setCodigo(11);
-		c1.setNombres("David");
-		c1.setPaterno("Rodriguez");
-		c1.setMaterno("Condezo");
+		ArrayList<Cliente> clientes = obtenerDatos(); //
+		ArrayList<Cliente> resultados = new ArrayList<Cliente>();
 
-		Cliente c2 = new Cliente();
-		c2.setCodigo(12);
-		c2.setNombres("Juan");
-		c2.setPaterno("Perez");
-		c2.setMaterno("Quispe");
+		for (Cliente cliente : clientes)
+			if (cliente.getNombres().equals(criterio)) {
+				resultados.add(cliente);
+				System.out.println("Encontrado --> " + criterio);
+			}
+
+		// Guardando datos en el scope REQUEST
+		request.setAttribute("resultados", resultados);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("clientes_buscar.jsp");
+		rd.forward(request, response);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	private ArrayList<Cliente> obtenerDatos() {
+		Cliente c1 = new Cliente(11,"David","Rodriguez","Condezo");
+		Cliente c2 = new Cliente(12,"Juan","Perez","Quispe");
 
 		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 		clientes.add(c1);
 		clientes.add(c2);
-
-		ArrayList<Cliente> resultados = new ArrayList<Cliente>();
-
-		for (Cliente cliente : clientes)
-			if (cliente.getNombres().equals(criterio))
-				resultados.add(cliente);
-
-		// Guardando datos en el scope REQUEST
-		request.setAttribute("resultados", resultados);
-		*/
-		
-		RequestDispatcher rd = request.getRequestDispatcher("clientes_buscar.jsp");
-		rd.forward(request, response);
+		return clientes;
 	}
 
 }
