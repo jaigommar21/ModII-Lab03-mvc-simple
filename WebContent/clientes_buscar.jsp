@@ -14,6 +14,9 @@
 
 </head>
 <body>
+
+	<div class="container">
+	
 	<form method="post" action="BuscarClienteServlet">
 		Nombres: <input type="text" name="txtNombres"/>
 		<input type="submit" value="Buscar"/>
@@ -32,6 +35,7 @@
 			}
 		} 		
 	--%>
-
+	
+	</div>
 </body>
 </html>
