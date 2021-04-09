@@ -26,6 +26,7 @@
 		ArrayList<Cliente> clientes = 
 					(ArrayList<Cliente>) request.getAttribute("data");		
 	
+		
 		if (clientes != null) {			
 			
 			if ( clientes.size() == 0 ) {
@@ -39,6 +40,11 @@
 		} else {
 			//out.println("NO HAY DATOS");
 		}
+		
+		String msg = (String)request.getAttribute("mensaje");
+		out.println(msg);
+		
+		
 	%>
 	
 	</div>

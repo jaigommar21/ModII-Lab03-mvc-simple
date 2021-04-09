@@ -43,22 +43,40 @@ public class BuscarClienteServlet extends HttpServlet {
 		//doGet(request, response);
 		
 		String criterio = request.getParameter("txtNombres");
+		
+		//String apellido = request.getParameter("txtApellido");
 
 		System.out.println("Dentro de ClientesBuscarServlet: " + criterio);
 
-		ArrayList<Cliente> clientes = obtenerDatos(); //
+		
+		ArrayList<Cliente> clientes = obtenerDatos(); // Datos de la BBDD
+		
+		
 		ArrayList<Cliente> resultados = new ArrayList<Cliente>();
 
-		for (Cliente cliente : clientes)
+		
+		for (Cliente cliente : clientes) { 
+			
+			System.out.println(cliente);
+			
 			if (cliente.getNombres().equals(criterio)) {
 				resultados.add(cliente);
 				System.out.println("Encontrado --> " + criterio);
 			}
+			
+		}
+		
 
+		System.out.println("Reg. encontrados : " + resultados.size());
+		
 		// Guardando datos en el scope REQUEST
 		request.setAttribute("data", resultados);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("clientes_buscar.jsp");
+		//
+		request.setAttribute("mensaje", "Espero este bien....!");
+		
+		// Redireccion al JSP
+		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 		rd.forward(request, response);
 	}
 
